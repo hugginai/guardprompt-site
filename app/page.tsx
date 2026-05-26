@@ -1,46 +1,56 @@
-const features = [
-  {
-    title: "Behavior Contracts",
-    desc: "Define approved tools, data access, memory rules, delegation limits, approvals, and runtime constraints.",
-  },
-  {
-    title: "Adversarial Testing",
-    desc: "Simulate prompt injection, tool misuse, privilege escalation, exfiltration, and approval bypass before deployment.",
-  },
-  {
-    title: "Deployment Certificates",
-    desc: "Generate signed evidence that an agent was validated against its approved operational contract.",
-  },
-  {
-    title: "Runtime Boundaries",
-    desc: "Ensure agents can reason dynamically while actions remain constrained by enforceable policies.",
-  },
+const navItems = [
+  { label: "Platform", href: "/platform" },
+  { label: "Contracts", href: "/contracts" },
+  { label: "Certification", href: "/certification" },
+  { label: "Docs", href: "/docs" },
+  { label: "Research", href: "/research" },
 ];
 
 const risks = [
-  "Unrestricted MCP tools",
-  "Unsafe delegation chains",
-  "Sensitive data exfiltration",
+  "Prompt injection",
+  "Unsafe tool access",
+  "Sensitive data exposure",
   "Approval bypass",
+  "Unbounded delegation",
   "Memory leakage",
-  "Excessive agency",
 ];
 
-const flow = [
+const capabilities = [
+  {
+    title: "Behavior Contracts",
+    desc: "Define what an agent is allowed to do: tools, data, memory, delegation, approvals, and runtime constraints.",
+  },
+  {
+    title: "Adversarial Testing",
+    desc: "Simulate prompt injection, privilege escalation, tool misuse, exfiltration, and approval bypass before deployment.",
+  },
+  {
+    title: "Deployment Certificates",
+    desc: "Generate evidence that an agent was validated against its approved behavioral boundary before production access.",
+  },
+  {
+    title: "Runtime Boundary Enforcement",
+    desc: "Govern the transition from reasoning to action through policy-aware execution and enforcement points.",
+  },
+];
+
+const pipeline = [
   "Agent Definition",
   "Behavior Contract",
   "Static Validation",
   "Attack Simulation",
   "Certificate",
   "Deployment Gate",
+  "Runtime Boundary",
 ];
 
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#050816] text-white">
       <div className="pointer-events-none fixed inset-0">
-        <div className="absolute left-1/2 top-0 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-[400px] w-[500px] rounded-full bg-blue-700/10 blur-3xl" />
+        <div className="absolute left-1/2 top-[-120px] h-[560px] w-[760px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute bottom-[-120px] right-[-120px] h-[520px] w-[620px] rounded-full bg-blue-700/10 blur-3xl" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:72px_72px]" />
       </div>
 
       <section className="relative mx-auto max-w-7xl px-6 py-8">
@@ -49,26 +59,23 @@ export default function Home() {
             GuardPrompt
           </a>
 
-          <div className="hidden gap-8 text-sm text-gray-400 md:flex">
-            <a href="#problem" className="hover:text-white">
-              Problem
-            </a>
-
-            <a href="#platform" className="hover:text-white">
-              Platform
-            </a>
-
-            <a href="/contracts" className="hover:text-white">
-              Contracts
-            </a>
-
-            <a href="/certification" className="hover:text-white">
-              Certification
-            </a>
+          <div className="hidden items-center gap-8 text-sm text-gray-400 md:flex">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href} className="hover:text-white">
+                {item.label}
+              </a>
+            ))}
           </div>
+
+          <a
+            href="/docs"
+            className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white hover:bg-white/10 md:inline-flex"
+          >
+            Early Access
+          </a>
         </nav>
 
-        <div className="grid gap-16 pt-28 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        <div className="grid gap-16 pt-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
           <div>
             <div className="inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-300">
               DevSecOps assurance for autonomous AI agents
@@ -102,10 +109,15 @@ export default function Home() {
           </div>
 
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-2xl">
-            <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">
-                Deployment Decision
-              </p>
+            <div className="rounded-3xl border border-white/10 bg-black/50 p-6">
+              <div className="flex items-center justify-between">
+                <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">
+                  Deployment Decision
+                </p>
+                <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs text-cyan-300">
+                  Certified
+                </span>
+              </div>
 
               <div className="mt-8 space-y-4">
                 {[
@@ -123,26 +135,31 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+
+              <div className="mt-6 rounded-2xl border border-cyan-400/10 bg-cyan-400/[0.04] p-4 text-sm leading-relaxed text-gray-300">
+                Agent passed contract validation but requires monitoring for
+                restricted data summarization attempts.
+              </div>
             </div>
           </div>
         </div>
 
-        <div id="problem" className="mt-36 grid gap-8 md:grid-cols-2">
+        <div className="mt-36 grid gap-8 md:grid-cols-2">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-gray-500">
-              The problem
+              The shift
             </p>
-
             <h2 className="mt-5 text-4xl font-semibold">
-              Agents are no longer just chat interfaces.
+              Agents are becoming operational actors.
             </h2>
           </div>
 
           <p className="text-lg leading-relaxed text-gray-300">
-            Modern agents invoke tools, call APIs, retrieve sensitive data, use
-            memory, and delegate tasks. Traditional controls were built for
-            humans, applications, and cloud workloads — not adaptive agents whose
-            behavior emerges from prompts, tools, context, and runtime state.
+            Modern AI agents invoke tools, call APIs, retrieve sensitive data,
+            use memory, and delegate tasks. Traditional controls were built for
+            humans, applications, and cloud workloads — not adaptive agents
+            whose behavior emerges from prompts, tools, context, and runtime
+            state.
           </p>
         </div>
 
@@ -157,14 +174,13 @@ export default function Home() {
           ))}
         </div>
 
-        <div id="platform" className="mt-36 grid gap-6 md:grid-cols-4">
-          {features.map((feature) => (
+        <div className="mt-36 grid gap-6 md:grid-cols-4">
+          {capabilities.map((feature) => (
             <div
               key={feature.title}
               className="rounded-3xl border border-white/10 bg-white/[0.035] p-7"
             >
               <h3 className="text-xl font-medium">{feature.title}</h3>
-
               <p className="mt-4 leading-relaxed text-gray-400">
                 {feature.desc}
               </p>
@@ -177,8 +193,8 @@ export default function Home() {
             Assurance pipeline
           </p>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-6">
-            {flow.map((step) => (
+          <div className="mt-8 grid gap-4 md:grid-cols-7">
+            {pipeline.map((step) => (
               <div
                 key={step}
                 className="rounded-2xl border border-white/10 bg-black/30 p-5 text-center text-sm text-gray-200"
@@ -189,10 +205,67 @@ export default function Home() {
           </div>
         </div>
 
-        <footer className="mt-36 border-t border-white/10 py-10 text-sm text-gray-500">
-          GuardPrompt is in early development. Initial focus: behavior
-          contracts, adversarial testing, deployment certificates, and runtime
-          boundary enforcement for AI agents.
+        <div className="mt-36 grid gap-10 md:grid-cols-2">
+          <div>
+            <p className="text-sm uppercase tracking-[0.3em] text-gray-500">
+              Core principle
+            </p>
+            <h2 className="mt-5 text-4xl font-semibold">
+              Govern actions, not thoughts.
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-gray-300">
+              Agents may reason dynamically. GuardPrompt governs the transition
+              from reasoning to action through explicit contracts, security
+              validation, signed certificates, and runtime boundary enforcement.
+            </p>
+          </div>
+
+          <pre className="overflow-x-auto rounded-3xl border border-white/10 bg-black/60 p-6 text-sm text-cyan-100">
+{`agent:
+  name: finance-assistant
+  owner: finance-platform
+
+allowed_tools:
+  - policy_search
+  - invoice_lookup
+
+denied_tools:
+  - shell
+  - external_email
+  - secrets_read
+
+requires_approval:
+  - payment_change
+  - bulk_export
+
+memory:
+  pii_storage: false
+  retention_days: 30
+
+delegation:
+  allowed: false`}
+          </pre>
+        </div>
+
+        <div className="mt-36 rounded-[2rem] border border-cyan-400/10 bg-cyan-400/[0.04] p-10">
+          <h2 className="text-3xl font-semibold">
+            Built for the agentic software lifecycle.
+          </h2>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-gray-300">
+            GuardPrompt is designed to become a deployment gate for AI agents:
+            scan the agent, validate the contract, run adversarial simulations,
+            issue a certificate, and enforce runtime boundaries before
+            production access is granted.
+          </p>
+        </div>
+
+        <footer className="mt-36 flex flex-col gap-4 border-t border-white/10 py-10 text-sm text-gray-500 md:flex-row md:items-center md:justify-between">
+          <p>
+            GuardPrompt is in early development. Initial focus: behavior
+            contracts, adversarial testing, deployment certificates, and runtime
+            boundary enforcement.
+          </p>
+          <p>© 2026 GuardPrompt</p>
         </footer>
       </section>
     </main>

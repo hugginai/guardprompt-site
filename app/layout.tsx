@@ -2,9 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "GuardPrompt | Deployment Assurance for AI Agents",
+  title: "GuardPrompt | AI Agent Deployment Assurance",
   description:
-    "Validate, test, certify, and enforce behavioral boundaries for autonomous AI agents before production deployment.",
+    "GuardPrompt validates, tests, certifies, and enforces behavioral boundaries for autonomous AI agents before production deployment.",
+  openGraph: {
+    title: "GuardPrompt | AI Agent Deployment Assurance",
+    description:
+      "DevSecOps assurance for autonomous AI agents. Behavior contracts, adversarial testing, deployment certificates, and runtime boundaries.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
