@@ -1,10 +1,5 @@
-const navItems = [
-  { label: "Platform", href: "/platform" },
-  { label: "Contracts", href: "/contracts" },
-  { label: "Certification", href: "/certification" },
-  { label: "Docs", href: "/docs" },
-  { label: "Research", href: "/research" },
-];
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 const risks = [
   "Prompt injection",
@@ -54,26 +49,7 @@ export default function Home() {
       </div>
 
       <section className="relative mx-auto max-w-7xl px-6 py-8">
-        <nav className="flex items-center justify-between">
-          <a href="/" className="text-xl font-semibold tracking-tight">
-            GuardPrompt
-          </a>
-
-          <div className="hidden items-center gap-8 text-sm text-gray-400 md:flex">
-            {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="hover:text-white">
-                {item.label}
-              </a>
-            ))}
-          </div>
-
-          <a
-            href="/docs"
-            className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white hover:bg-white/10 md:inline-flex"
-          >
-            Early Access
-          </a>
-        </nav>
+        <Navbar />
 
         <div className="grid gap-16 pt-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
           <div>
@@ -108,7 +84,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-2xl">
+          <div className="float-slow rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-2xl">
             <div className="rounded-3xl border border-white/10 bg-black/50 p-6">
               <div className="flex items-center justify-between">
                 <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">
@@ -259,14 +235,7 @@ delegation:
           </p>
         </div>
 
-        <footer className="mt-36 flex flex-col gap-4 border-t border-white/10 py-10 text-sm text-gray-500 md:flex-row md:items-center md:justify-between">
-          <p>
-            GuardPrompt is in early development. Initial focus: behavior
-            contracts, adversarial testing, deployment certificates, and runtime
-            boundary enforcement.
-          </p>
-          <p>© 2026 GuardPrompt</p>
-        </footer>
+        <Footer />
       </section>
     </main>
   );
