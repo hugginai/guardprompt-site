@@ -1,23 +1,26 @@
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+
 const layers = [
   {
-    title: "1. Agent Intake",
-    desc: "Inspect agent definitions, prompts, tools, MCP servers, memory settings, model configuration, and runtime permissions.",
+    title: "Agent Intake",
+    desc: "Inspect prompts, tools, MCP servers, memory settings, model configuration, identities, and runtime permissions.",
   },
   {
-    title: "2. Contract Validation",
-    desc: "Compare the implementation against approved behavior contracts and flag mismatches before deployment.",
+    title: "Contract Validation",
+    desc: "Compare implementation details against approved behavior contracts and flag mismatches before deployment.",
   },
   {
-    title: "3. Adversarial Simulation",
-    desc: "Run controlled attack scenarios for prompt injection, tool misuse, privilege escalation, unsafe delegation, and data exfiltration.",
+    title: "Adversarial Simulation",
+    desc: "Run tests for prompt injection, unsafe tool use, privilege escalation, approval bypass, and data exfiltration.",
   },
   {
-    title: "4. Assurance Certificate",
-    desc: "Generate a signed validation artifact that binds results to the contract, repository commit, tool manifest, and policy pack.",
+    title: "Assurance Certificate",
+    desc: "Generate signed evidence tied to the repo commit, contract hash, tool manifest, and policy pack.",
   },
   {
-    title: "5. Runtime Boundary",
-    desc: "Future enforcement layer that evaluates action requests before tools, APIs, or enterprise systems are invoked.",
+    title: "Runtime Boundary",
+    desc: "Future enforcement layer that evaluates high-risk actions before tools, APIs, or enterprise systems are invoked.",
   },
 ];
 
@@ -27,30 +30,14 @@ const outcomes = [
   "Validate behavior before production access",
   "Create repeatable AI SDLC gates",
   "Reduce manual security reviews",
-  "Govern agent actions without constraining reasoning",
+  "Govern actions without constraining reasoning",
 ];
 
 export default function PlatformPage() {
   return (
-    <main className="min-h-screen bg-[#050816] px-6 py-20 text-white">
+    <main className="min-h-screen bg-[#050816] px-6 py-8 text-white">
       <section className="mx-auto max-w-7xl">
-        <nav className="flex items-center justify-between">
-          <a href="/" className="text-xl font-semibold">
-            GuardPrompt
-          </a>
-
-          <div className="hidden gap-8 text-sm text-gray-400 md:flex">
-            <a href="/contracts" className="hover:text-white">
-              Contracts
-            </a>
-            <a href="/certification" className="hover:text-white">
-              Certification
-            </a>
-            <a href="/docs" className="hover:text-white">
-              Docs
-            </a>
-          </div>
-        </nav>
+        <Navbar />
 
         <div className="mt-24 max-w-4xl">
           <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">
@@ -62,20 +49,20 @@ export default function PlatformPage() {
           </h1>
 
           <p className="mt-8 text-xl leading-relaxed text-gray-300">
-            GuardPrompt is designed to fit into the development and deployment
-            workflow for autonomous AI agents — before agents receive production
-            access to tools, memory, APIs, or enterprise systems.
+            GuardPrompt fits into the development and deployment workflow for
+            autonomous AI agents before they receive production access to tools,
+            memory, APIs, or enterprise systems.
           </p>
         </div>
 
         <div className="mt-20 grid gap-6">
-          {layers.map((layer) => (
+          {layers.map((layer, index) => (
             <div
               key={layer.title}
-              className="rounded-3xl border border-white/10 bg-white/[0.035] p-8 md:grid md:grid-cols-[0.35fr_0.65fr] md:gap-8"
+              className="rounded-3xl border border-white/10 bg-white/[0.035] p-8 md:grid md:grid-cols-[0.3fr_0.7fr] md:gap-8"
             >
               <h2 className="text-2xl font-semibold text-cyan-100">
-                {layer.title}
+                {index + 1}. {layer.title}
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-gray-300 md:mt-0">
                 {layer.desc}
@@ -107,6 +94,8 @@ export default function PlatformPage() {
             </div>
           ))}
         </div>
+
+        <Footer />
       </section>
     </main>
   );
