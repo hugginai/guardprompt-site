@@ -1,3 +1,6 @@
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+
 const commands = [
   {
     title: "Initialize a contract",
@@ -10,12 +13,12 @@ const commands = [
     desc: "Analyzes agent files, tools, prompts, memory configuration, and behavior contract.",
   },
   {
-    title: "Fail on critical findings",
+    title: "Block critical findings",
     command: "guardprompt scan . --fail-on critical",
-    desc: "Blocks CI/CD when critical policy violations are detected.",
+    desc: "Fails CI/CD when critical policy violations are detected.",
   },
   {
-    title: "Generate report",
+    title: "Generate evidence",
     command: "guardprompt report --format json",
     desc: "Outputs validation evidence for deployment review or audit workflows.",
   },
@@ -34,25 +37,9 @@ const checks = [
 
 export default function DocsPage() {
   return (
-    <main className="min-h-screen bg-[#050816] px-6 py-20 text-white">
-      <section className="mx-auto max-w-6xl">
-        <nav className="flex items-center justify-between">
-          <a href="/" className="text-xl font-semibold">
-            GuardPrompt
-          </a>
-
-          <div className="hidden gap-8 text-sm text-gray-400 md:flex">
-            <a href="/platform" className="hover:text-white">
-              Platform
-            </a>
-            <a href="/contracts" className="hover:text-white">
-              Contracts
-            </a>
-            <a href="/certification" className="hover:text-white">
-              Certification
-            </a>
-          </div>
-        </nav>
+    <main className="min-h-screen bg-[#050816] px-6 py-8 text-white">
+      <section className="mx-auto max-w-7xl">
+        <Navbar />
 
         <div className="mt-24 max-w-4xl">
           <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">
@@ -73,7 +60,7 @@ export default function DocsPage() {
 
         <div className="mt-20 rounded-[2rem] border border-white/10 bg-white/[0.035] p-8">
           <p className="text-sm uppercase tracking-[0.3em] text-gray-500">
-            Quick start
+            Planned quick start
           </p>
 
           <pre className="mt-6 overflow-x-auto rounded-2xl bg-black/60 p-6 text-sm text-cyan-100">
@@ -85,8 +72,8 @@ guardprompt report --format html`}
           </pre>
 
           <p className="mt-6 text-sm text-gray-500">
-            CLI package is planned. Current site documents the product direction
-            and initial interface.
+            CLI package is planned. Current site documents the product
+            direction, security model, and initial interface.
           </p>
         </div>
 
@@ -142,6 +129,8 @@ guardprompt report --format html`}
             )}
           </div>
         </div>
+
+        <Footer />
       </section>
     </main>
   );

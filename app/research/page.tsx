@@ -1,3 +1,6 @@
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+
 const topics = [
   {
     title: "Identity is necessary, but not sufficient",
@@ -28,28 +31,9 @@ const principles = [
 
 export default function ResearchPage() {
   return (
-    <main className="min-h-screen bg-[#050816] px-6 py-20 text-white">
-      <section className="mx-auto max-w-6xl">
-        <nav className="flex items-center justify-between">
-          <a href="/" className="text-xl font-semibold">
-            GuardPrompt
-          </a>
-
-          <div className="hidden gap-8 text-sm text-gray-400 md:flex">
-            <a href="/platform" className="hover:text-white">
-              Platform
-            </a>
-            <a href="/contracts" className="hover:text-white">
-              Contracts
-            </a>
-            <a href="/certification" className="hover:text-white">
-              Certification
-            </a>
-            <a href="/docs" className="hover:text-white">
-              Docs
-            </a>
-          </div>
-        </nav>
+    <main className="min-h-screen bg-[#050816] px-6 py-8 text-white">
+      <section className="mx-auto max-w-7xl">
+        <Navbar />
 
         <div className="mt-24 max-w-4xl">
           <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">
@@ -144,6 +128,8 @@ Tool or API Execution
 Evidence + Drift Monitoring`}
           </pre>
         </div>
+
+        <Footer />
       </section>
     </main>
   );
