@@ -31,12 +31,30 @@ export default function Home() {
     <main className="min-h-screen bg-[#050816] text-white">
       <section className="mx-auto max-w-7xl px-6 py-8">
         <nav className="flex items-center justify-between">
-          <div className="text-xl font-semibold tracking-tight">GuardPrompt</div>
+          <div className="text-xl font-semibold tracking-tight">
+            GuardPrompt
+          </div>
+
           <div className="hidden gap-8 text-sm text-gray-400 md:flex">
-            <a href="#problem" className="hover:text-white">Problem</a>
-            <a href="#platform" className="hover:text-white">Platform</a>
-            <a href="#contracts" className="hover:text-white">Contracts</a>
-            <a href="#docs" className="hover:text-white">Docs</a>
+            <a href="#problem" className="hover:text-white">
+              Problem
+            </a>
+
+            <a href="#platform" className="hover:text-white">
+              Platform
+            </a>
+
+            <a href="/contracts" className="hover:text-white">
+              Contracts
+            </a>
+
+            <a href="/certification" className="hover:text-white">
+              Certification
+            </a>
+
+            <a href="#docs" className="hover:text-white">
+              Docs
+            </a>
           </div>
         </nav>
 
@@ -50,18 +68,20 @@ export default function Home() {
           </h1>
 
           <p className="mt-8 max-w-3xl text-xl leading-relaxed text-gray-300">
-            GuardPrompt helps teams define behavioral boundaries, test AI agents against
-            adversarial scenarios, and generate deployment assurance evidence before agents
-            access tools, data, memory, or enterprise systems.
+            GuardPrompt helps teams define behavioral boundaries, test AI
+            agents against adversarial scenarios, and generate deployment
+            assurance evidence before agents access tools, data, memory, or
+            enterprise systems.
           </p>
 
           <div className="mt-12 flex flex-wrap gap-4">
             <a
-              href="#contracts"
+              href="/contracts"
               className="rounded-2xl bg-cyan-400 px-6 py-4 font-medium text-black"
             >
               View Contract Model
             </a>
+
             <a
               href="#platform"
               className="rounded-2xl border border-white/10 px-6 py-4 text-white"
@@ -76,15 +96,18 @@ export default function Home() {
             <p className="text-sm uppercase tracking-[0.3em] text-gray-500">
               The problem
             </p>
+
             <h2 className="mt-5 text-4xl font-semibold">
               Agents are becoming operational actors.
             </h2>
           </div>
+
           <p className="text-lg leading-relaxed text-gray-300">
-            Modern AI agents can invoke tools, call APIs, retrieve sensitive data,
-            use memory, and delegate tasks. Traditional controls were built for humans,
-            applications, and cloud workloads — not adaptive agents whose behavior emerges
-            from prompts, tools, context, and runtime state.
+            Modern AI agents can invoke tools, call APIs, retrieve sensitive
+            data, use memory, and delegate tasks. Traditional controls were
+            built for humans, applications, and cloud workloads — not adaptive
+            agents whose behavior emerges from prompts, tools, context, and
+            runtime state.
           </p>
         </div>
 
@@ -95,7 +118,10 @@ export default function Home() {
               className="rounded-3xl border border-white/10 bg-white/[0.03] p-7"
             >
               <h3 className="text-xl font-medium">{feature.title}</h3>
-              <p className="mt-4 leading-relaxed text-gray-400">{feature.desc}</p>
+
+              <p className="mt-4 leading-relaxed text-gray-400">
+                {feature.desc}
+              </p>
             </div>
           ))}
         </div>
@@ -104,6 +130,7 @@ export default function Home() {
           <p className="text-sm uppercase tracking-[0.3em] text-gray-500">
             Assurance pipeline
           </p>
+
           <div className="mt-8 grid gap-4 md:grid-cols-6">
             {flow.map((step) => (
               <div
@@ -116,18 +143,23 @@ export default function Home() {
           </div>
         </div>
 
-        <div id="contracts" className="mt-28 grid gap-8 md:grid-cols-2">
+        <div
+          id="contracts"
+          className="mt-28 grid gap-8 md:grid-cols-2"
+        >
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-gray-500">
               Behavior contracts
             </p>
+
             <h2 className="mt-5 text-4xl font-semibold">
               Define what an agent is allowed to do.
             </h2>
+
             <p className="mt-6 text-lg leading-relaxed text-gray-300">
-              Agents may reason dynamically. GuardPrompt focuses on governing the
-              transition from reasoning to action through explicit contracts and
-              enforceable runtime boundaries.
+              Agents may reason dynamically. GuardPrompt focuses on governing
+              the transition from reasoning to action through explicit contracts
+              and enforceable runtime boundaries.
             </p>
           </div>
 
@@ -158,9 +190,31 @@ delegation:
           </pre>
         </div>
 
-        <div id="docs" className="mt-28 border-t border-white/10 py-10 text-sm text-gray-500">
-          GuardPrompt is currently in early development. Initial focus: CLI scanner,
-          behavior contracts, attack simulation, and deployment certificates.
+        <div className="mt-28 grid gap-6 md:grid-cols-3">
+          {[
+            "Prompt Injection Defense",
+            "Tool Permission Validation",
+            "Data Boundary Enforcement",
+            "Delegation Restrictions",
+            "Runtime Policy Validation",
+            "Deployment Approval Gates",
+          ].map((item) => (
+            <div
+              key={item}
+              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-gray-300"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+
+        <div
+          id="docs"
+          className="mt-28 border-t border-white/10 py-10 text-sm text-gray-500"
+        >
+          GuardPrompt is currently in early development. Initial focus:
+          behavior contracts, attack simulation, runtime assurance, and
+          deployment certificates for autonomous AI agents.
         </div>
       </section>
     </main>
